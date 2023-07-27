@@ -1,0 +1,11 @@
+version: "3.6"
+services:
+  strongswan-do:
+    image: strongswan-do:1
+    cap_add:
+      - ALL
+    environment:
+      - VPN_TARGET_IP=1.1.1.1
+      - VPN_PSK=""
+      - VPN_LEFTSUBNET=192.168.15.0/24
+      - VPN_RIGHTSUBNET=10.130.149.0/26

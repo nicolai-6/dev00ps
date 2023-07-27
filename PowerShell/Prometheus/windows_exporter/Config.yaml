@@ -1,0 +1,17 @@
+﻿---
+# Default Windows exporter config.yaml
+collectors:
+  enabled: cpu,cs,logical_disk,net,os,service,system,textfile
+collector:
+  service:
+    services-where: Name='windows_exporter'
+  scheduled_task:
+    blacklist: /Microsoft/.+
+log:
+  level: debug
+scrape:
+  timeout-margin: 0.5
+telemetry:
+  addr: "192.168.10.10:9182" # REPLACE ME WITH PROPER IP
+  path: /metrics
+  max-requests: 5

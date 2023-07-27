@@ -1,0 +1,37 @@
+## standalone deployment of strongswan vpn dialout pod for testing purpose
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vpn-sidecar
+  name: vpn-sidecar
+  namespace: WHATEVER
+spec:
+  selector:
+    matchLabels:
+      app: vpn-sidecar
+  template:
+    metadata:
+      labels:
+        app: vpn-sidecar
+    spec:
+      containers:
+      - name: vpn-sidecar
+        image: registryHeroDomain/vpn-sidecar:v2
+        imagePullPolicy: Always
+        env:
+        - name: VPN_TARGET_IP
+          value: "1.1.1.1"
+        - name: VPN_PSK
+          value: "'HEROSECRET'"
+        - name: VPN_LEFTSUBNET
+          value: "10.42.1.0/24,10.42.2.0/24,10.42.3.0/24,10.42.4.0/24"
+        - name: VPN_RIGHTSUBNET
+          value: "10.130.149.0/26"
+        securityContext:
+          capabilities:
+            add:
+              - CAP_NET_ADMIN # required by strongswan
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always
