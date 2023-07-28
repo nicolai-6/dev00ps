@@ -2,4 +2,4 @@
 DNS_1: "10.10.10.100"
 DNS_2: "9.9.9.9"
 DNS_search_domain: "dev00ps.corp"
-netplan_template_path: "../templates/bcloud-b-custom.yaml"
+netplan_template_path: "../templates/dev00ps-custom.yaml"
