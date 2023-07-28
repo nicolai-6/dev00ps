@@ -1,0 +1,11 @@
+# ansible customized network config
+network:
+  ethernets:
+    enp1s0:
+      dhcp4: false
+      addresses: [{{main_IPv4_cidr}}]
+      gateway4: {{ main_IPv4_gw }}
+      nameservers:
+        addresses: [{{ DNS_1 }}, {{ DNS_2 }}]
+        search: [{{ DNS_search_domain }}]
+  version: 2

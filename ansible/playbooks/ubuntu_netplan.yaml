@@ -1,0 +1,9 @@
+---
+- name: Update netplan on target
+  hosts: all, !localhost
+  become: yes
+  vars_files:
+    - "../target_env/{{ inventory_hostname }}/vars/main.yaml"
+
+  roles:
+    - ubuntu_netplan

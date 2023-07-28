@@ -1,0 +1,12 @@
+---
+# restart systemd-timesyncd
+-  name: Restart systemd-timesyncd
+   ansible.builtin.service:
+     name: systemd-timesyncd
+     state: restarted
+
+# restart rsyslog service, otherwise syslog wont pickup new timezone
+- name: Restart rsyslog
+  ansible.builtin.service:
+     name: rsyslog
+     state: restarted

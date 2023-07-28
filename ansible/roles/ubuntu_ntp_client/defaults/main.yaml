@@ -1,0 +1,5 @@
+---
+# default vars for ubuntu ntp client
+timesyncd_conf_file: "timesyncd.conf"
+timesyncd_conf_path: "/etc/systemd/timesyncd.conf"
+timesyncd_timezone: "Europe/Berlin"

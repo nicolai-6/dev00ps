@@ -1,0 +1,13 @@
+---
+# copy and apply netplan config
+- name: provide netplan config
+  ansible.builtin.template:
+    src: "{{ netplan_template_path }}"
+    dest: /etc/netplan/
+    owner: root
+    group: root
+    mode: '0644'
+    backup: no
+
+- name: run netplan apply
+  ansible.builtin.shell: netplan apply &

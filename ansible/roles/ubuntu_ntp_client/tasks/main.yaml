@@ -1,0 +1,12 @@
+---
+# inject custom ntp server and restart systemd-timesyncd client if required
+- name: provide timesyncd conf
+  ansible.builtin.template:
+    src: "{{ timesyncd_conf_file }}"
+    dest: "{{ timesyncd_conf_path }}"
+  notify:
+    - Restart systemd-timesyncd
+    - Restart rsyslog # otherwise syslog wont pickup new timezone
+
+- name: set timezone with timedatectl
+  ansible.builtin.shell: timedatectl set-timezone {{ timesyncd_timezone }}
