@@ -4,5 +4,10 @@
     - includes some fixes for multi monitor usage (still maybe only runs with one active display, depending on the OS)
 
 ## RUNBOOK
-    - optionally adjust constants.py
-    - install requirements and run main.py
+    python3 -m venv .slacker
+    source .slacker/bin/activate
+    python3 -m pip install --upgrade pip
+    pip install -r requirements.txt
+
+- optionally adjust constants.py
+- install requirements and run main.py
