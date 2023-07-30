@@ -1,0 +1,17 @@
+---
+# users management on target
+- name: add sudo users
+  ansible.builtin.user:
+    name: "{{ item.value.username }}"
+    comment: "{{ item.value.comment }}"
+    group: "{{ item.value.group }}"
+    password: "{{ item.value.password }}"
+    update_password: always
+    shell: /bin/bash
+  loop: "{{ query('dict', sudo_users) }}"
+
+- name: expire passwords for desired users
+  ansible.builtin.shell: chage -d 0 {{ item.value.username }}
+  loop: "{{ query('dict', sudo_users) }}"
+  when:
+    - item.value.expire_password | bool # only if expire_password == true

@@ -1,0 +1,16 @@
+---
+# default vars user role
+sudo_users:
+  TBD:
+    username: ""
+    password: ""
+    group: sudo
+    comment: ""
+    expire_password: false
+  TBD:
+    username: ""
+    password: ""
+    group: sudo
+    comment: ""
+    expire_password: false
+
