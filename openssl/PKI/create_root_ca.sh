@@ -1,6 +1,6 @@
 #!/bin/bash
 #### requires at least openssl 1.1.1 version to make use of state-of-the-art curves
-‚
+
 function constants() {
     CURVE=secp384r1
     BASENAME="root_ca"
